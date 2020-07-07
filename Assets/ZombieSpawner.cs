@@ -5,16 +5,22 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
     public GameObject zombiePrefab;
+    public int number = 1;
 
 
     private void Start()
     {
-        InvokeRepeating("Spawn", .5f, 2);
+        InvokeRepeating("Spawn", .5f, 4);
     }
     void Spawn()
     {
         Vector2 position = RandomCircle(Vector3.zero, 20);
-        Instantiate(zombiePrefab, position, Quaternion.identity);
+        for (int i = 0; i < number; i++)
+        {
+            Instantiate(zombiePrefab, position, Quaternion.identity);
+        }
+        number++;
+        
     }
     Vector3 RandomCircle (Vector3 center, float radius)
     {
